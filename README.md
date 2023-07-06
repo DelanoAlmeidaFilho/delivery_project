@@ -27,17 +27,17 @@ To run the project, use the following command:
 
 ## dependencies
 
--   [express](www.npmjs.com/package/express) 
+-   [express](https://www.npmjs.com/package/express) 
 -   [Prisma](https://www.prisma.io/)
 -   [JWT](https://jwt.io)
 -   [BCrypt](https://www.npmjs.com/package/bcrypt)
--   [JsonWebToken](www.npmjs.com/package/jsonwebtoken)
--   [tsyringe](www.npmjs.com/package/tsyringe)
--   [celebrate](www.npmjs.com/package/celebrate) 
--   [cors](www.npmjs.com/package/cors) 
--   [dayjs](www.npmjs.com/package/dayjs) 
--   [dotenv](www.npmjs.com/package/dotenv) 
--   [handlebars](www.npmjs.com/package/handlebars) 
--   [nodemailer](www.npmjs.com/package/nodemailer) 
+-   [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
+-   [tsyringe](https://www.npmjs.com/package/tsyringe)
+-   [celebrate](https://www.npmjs.com/package/celebrate) 
+-   [cors](https://www.npmjs.com/package/cors) 
+-   [dayjs](https://www.npmjs.com/package/dayjs) 
+-   [dotenv](https://www.npmjs.com/package/dotenv) 
+-   [handlebars](https://www.npmjs.com/package/handlebars) 
+-   [nodemailer](https://www.npmjs.com/package/nodemailer) 
 
 <h3 align="center">Desenvolvido por  Delano Almeida filho </h3>
