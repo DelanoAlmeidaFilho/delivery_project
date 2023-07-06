@@ -1,20 +1,19 @@
-# Template-node-express
+nodejs application that performs inventory control and manages online orders
 
+## entity relationship diagram:
 
-Base template to automate nodejs projects using express with code formatting tools, error handling, typing and organization suggestion of project folders. For the purpose of creating a code standardization.
-
-## Install the project's development dependencies:
-
-```javascript
-
-    npm run getDevDependencies
-```
-
-## Install the project's dependencies:
-
-```javascript
-
-    npm run getDependencies
+```mermaid
+erDiagram
+    CATEGORIES ||--o{ PRODUCTS : ""
+    PRODUCTS }|--|| SUPPLIERS : ""
+    PRODUCTS ||--o{ ORDER_PRODUCT : ""
+    ORDERS ||--o{ ORDER_PRODUCT : ""
+    PAYMENT_METHODS ||--o{ ORDERS: ""
+    USERS }o--|{ ROLES : ""
+    USERS ||--o{ USER_TOKENS : ""
+    ADDRESS ||--o| USERS : ""
+    ADDRESS ||--o| SUPPLIERS : ""
+    PRODUCT_ENTRY
 ```
 
 ## Executing the Project
@@ -26,8 +25,19 @@ To run the project, use the following command:
     npm run dev
 ```
 
-This will start the Node.js server using Express.
+## dependencies
 
-## Prettier and ESLint
+-   [express](www.npmjs.com/package/express) 
+-   [Prisma](https://www.prisma.io/)
+-   [JWT](https://jwt.io)
+-   [BCrypt](https://www.npmjs.com/package/bcrypt)
+-   [JsonWebToken](www.npmjs.com/package/jsonwebtoken)
+-   [tsyringe](www.npmjs.com/package/tsyringe)
+-   [celebrate](www.npmjs.com/package/celebrate) 
+-   [cors](www.npmjs.com/package/cors) 
+-   [dayjs](www.npmjs.com/package/dayjs) 
+-   [dotenv](www.npmjs.com/package/dotenv) 
+-   [handlebars](www.npmjs.com/package/handlebars) 
+-   [nodemailer](www.npmjs.com/package/nodemailer) 
 
-This project uses Prettier and ESLint for code standardization. Prettier is a code formatting tool that helps you maintain a consistent style throughout your project, while ESLint is a static analysis tool that helps you identify and fix code issues.
+<h3 align="center">Desenvolvido por  Delano Almeida filho </h3>
