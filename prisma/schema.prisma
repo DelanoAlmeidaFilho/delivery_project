@@ -1,0 +1,153 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id           String   @id @default(uuid())
+    name         String
+    email        String   @unique
+    password     String
+    phone_number String
+    created_at   DateTime @default(now())
+
+    roles  Role[]  @relation("UserRole")
+    orders Order[]
+
+    user_tokens userTokens[]
+
+    address Address?
+
+    @@map("users")
+}
+
+model Role {
+    id   String @id @default(uuid())
+    name String
+
+    users User[] @relation("UserRole")
+
+    @@map("roles")
+}
+
+model userTokens {
+    token     String @id @default(uuid())
+    expiresIn Int
+    user      User   @relation(fields: [user_id], references: [id])
+    user_id   String
+
+    @@map("user_tokens")
+}
+
+model Category {
+    id   String @id @default(uuid())
+    name String
+
+    products Product[]
+
+    @@map("categories")
+}
+
+model Product {
+    id             String  @id @default(uuid())
+    name           String
+    description    String?
+    price          Decimal
+    banner         String
+    stock_quantity Int
+
+    category    Category @relation(fields: [category_id], references: [id])
+    category_id String
+
+    supplier    Supplier? @relation(fields: [supplier_id], references: [id])
+    supplier_id String?
+
+    product_entries Product_Entry[]
+    order_product   Order_Product[]
+
+    @@map("products")
+}
+
+model Product_Entry {
+    id         String   @id @default(uuid())
+    amount     Int
+    cost_price DateTime
+
+    product    Product @relation(fields: [product_id], references: [id])
+    product_id String
+
+    @@map("product_entries")
+}
+
+model Supplier {
+    id           String  @id @default(uuid())
+    name         String
+    cnpj         String?
+    phone_number String
+    email        String?
+
+    Product Product[]
+
+    @@map("suppliers")
+}
+
+model Payment_method {
+    id   String @id @default(uuid())
+    name String
+
+    orders Order[]
+
+    @@map("payment_methods")
+}
+
+model Order {
+    id          String  @id @default(uuid())
+    total       Decimal @default(0)
+    change      Decimal @default(0)
+    observation String?
+    status      Boolean @default(false)
+
+    customer    User   @relation(fields: [customer_id], references: [id])
+    customer_id String
+
+    payment_method    Payment_method @relation(fields: [payment_method_id], references: [id])
+    payment_method_id String
+
+    order_product Order_Product[]
+
+    @@map("orders")
+}
+
+model Order_Product {
+    id     String @id @default(uuid())
+    amount Int
+
+    order    Order  @relation(fields: [order_id], references: [id])
+    order_id String
+
+    product    Product @relation(fields: [product_id], references: [id])
+    product_id String
+
+    @@map("order_product")
+}
+
+model Address {
+    id           String  @id @default(uuid())
+    road         String
+    number       String
+    complement   String?
+    neighborhood String
+    cep          String
+
+    user    User   @relation(fields: [user_id], references: [id])
+    user_id String @unique
+
+    @@map("addresses")
+}
