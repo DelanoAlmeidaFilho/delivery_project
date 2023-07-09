@@ -40,4 +40,4 @@ To run the project, use the following command:
 -   [handlebars](https://www.npmjs.com/package/handlebars)
 -   [nodemailer](https://www.npmjs.com/package/nodemailer)
 
-<h3 align="center">Desenvolvido por  Delano Almeida filho </h3>
+<h3 align="center">Created by  Delano Almeida filho </h3>

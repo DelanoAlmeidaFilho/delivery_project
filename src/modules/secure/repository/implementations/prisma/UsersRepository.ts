@@ -1,7 +1,7 @@
 import { IUserRequest } from 'modules/secure/DTOs/IUserRequest';
 import { IUsersRepository } from '../../IUsersRepository';
 import { client } from 'shared/prisma';
-import { User } from '@prisma/client';
+import { Role, User } from '@prisma/client';
 import { IUpdateUser } from 'modules/secure/interfaces/IUpdateUser';
 
 class UsersRepository implements IUsersRepository {
@@ -24,9 +24,12 @@ class UsersRepository implements IUsersRepository {
             },
         });
     }
-    async findByEmail(email: string): Promise<User> {
+    async findByEmail(email: string): Promise<User & { roles: Role[] }> {
         return await client.user.findUnique({
             where: { email },
+            include: {
+                roles: true,
+            },
         });
     }
 
