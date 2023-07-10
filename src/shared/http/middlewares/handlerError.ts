@@ -15,6 +15,8 @@ const handlerError = (
         });
     }
 
+    // console.log(error);
+
     return res
         .status(500)
         .json({ error: true, message: 'Internal server error.' });

@@ -28,16 +28,20 @@ class DayjsDateProvider implements IDateProvider {
         return dayjs(end_date_utc).diff(start_date_utc, 'days');
     }
 
-    addDays(days: number): Date {
-        return dayjs().add(days, 'days').toDate();
+    addDays(days: number): number {
+        return dayjs().add(days, 'days').unix();
     }
 
-    addHours(hours: number): Date {
-        return dayjs().add(hours, 'hour').toDate();
+    addHours(hours: number): number {
+        return dayjs().add(hours, 'hour').unix();
     }
 
     compareIfBefore(start_date: Date, end_date: Date): boolean {
         return dayjs(start_date).isBefore(end_date);
+    }
+
+    isAfter(unixDate: number): boolean {
+        return dayjs().isAfter(dayjs.unix(unixDate));
     }
 }
 

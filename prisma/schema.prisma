@@ -40,11 +40,11 @@ model Role {
 }
 
 model RefreshTokens {
-    id         String   @id @default(uuid())
+    id         String @id @default(uuid())
     token      String
-    expires_in DateTime
-    user       User     @relation(fields: [user_id], references: [id])
-    user_id    String   @unique
+    expires_in Int
+    user       User   @relation(fields: [user_id], references: [id])
+    user_id    String @unique
 
     @@map("refresh_tokens")
 }
