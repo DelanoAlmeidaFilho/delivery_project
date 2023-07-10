@@ -21,9 +21,9 @@ model User {
     roles  Role[]  @relation("UserRole")
     orders Order[]
 
-    user_tokens UserTokens[]
+    refresh_tokens RefreshTokens?
 
-    refresh_token RefreshToken?
+    user_tokens UserTokens[]
 
     address Address?
 
@@ -39,14 +39,14 @@ model Role {
     @@map("roles")
 }
 
-model RefreshToken {
+model RefreshTokens {
     id         String   @id @default(uuid())
     token      String
     expires_in DateTime
     user       User     @relation(fields: [user_id], references: [id])
     user_id    String   @unique
 
-    @@map("refresh_token")
+    @@map("refresh_tokens")
 }
 
 model UserTokens {

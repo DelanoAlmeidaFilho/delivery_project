@@ -33,9 +33,12 @@ class UsersRepository implements IUsersRepository {
         });
     }
 
-    async findById(id: string): Promise<User> {
+    async findById(id: string): Promise<User & { roles: Role[] }> {
         return await client.user.findUnique({
             where: { id },
+            include: {
+                roles: true,
+            },
         });
     }
 

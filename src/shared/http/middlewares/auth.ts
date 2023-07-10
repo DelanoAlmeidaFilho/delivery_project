@@ -6,7 +6,7 @@ export function auth(req: Request, res: Response, next: NextFunction) {
     const authHeaders = req.headers.authorization;
 
     if (!authHeaders) {
-        throw new AppError('Invalid token!', 401);
+        throw new AppError('Invalid token!', 'token.invalid', 401);
     }
 
     const [, token] = authHeaders.split(' ');
@@ -19,6 +19,6 @@ export function auth(req: Request, res: Response, next: NextFunction) {
 
         return next();
     } catch (err) {
-        throw new AppError('Invalid token!', 401, 'token.invalid');
+        throw new AppError('Invalid token!', 'token.invalid', 401);
     }
 }

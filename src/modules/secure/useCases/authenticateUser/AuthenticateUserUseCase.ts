@@ -1,10 +1,7 @@
 import { compare } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
 import { IAuthenticateRequest } from 'modules/secure/DTOs/IAuthenticateRequest';
 import { IAuthenticateResponse } from 'modules/secure/DTOs/IAuthenticateResponse';
-import { IRefreshTokensRepository } from 'modules/secure/repository/IRefreshTokensRepository';
 import { IUsersRepository } from 'modules/secure/repository/IUsersRepository';
-import { IDateProvider } from 'shared/container/providers/DateProvider/IDateProvider';
 import { IJwtProvider } from 'shared/container/providers/JwtProvider/IJwtProvider';
 import { AppError } from 'shared/error/AppError';
 import { inject, injectable } from 'tsyringe';

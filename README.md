@@ -14,6 +14,7 @@ erDiagram
     PRODUCT_ENTRY}o--|| PRODUCTS : ""
     USERS ||--o{ ORDERS : ""
     PRODUCTS }o--o| SUPPLIERS : ""
+    USERS ||--o| REFRESH_TOKENS : ""
 ```
 
 ## Executing the Project

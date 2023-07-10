@@ -7,4 +7,10 @@ const authenticateValidation = celebrate({
     },
 });
 
-export { authenticateValidation };
+const refreshValidation = celebrate({
+    [Segments.BODY]: {
+        token: Joi.string().required(),
+    },
+});
+
+export { authenticateValidation, refreshValidation };

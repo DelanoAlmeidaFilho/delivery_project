@@ -1,33 +1,39 @@
+import { RefreshTokens } from '@prisma/client';
+import { ICreateRefreshTokenDTO } from 'modules/secure/interfaces/ICreateRefreshTokenDTO';
 import { client } from 'shared/prisma';
 import { IRefreshTokensRepository } from '../../IRefreshTokensRepository';
-import { RefreshToken } from '@prisma/client';
-import { ICreateRefreshTokenDTO } from 'modules/secure/DTOs/ICreateRefreshTokenDTO';
 
 class RefreshTokensRepository implements IRefreshTokensRepository {
-    async create(data: ICreateRefreshTokenDTO): Promise<RefreshToken> {
-        return await client.refreshToken.create({
+    async create(data: ICreateRefreshTokenDTO): Promise<RefreshTokens> {
+        return await client.refreshTokens.create({
             data,
         });
     }
 
-    async findTokenByUserId(user_id: string): Promise<RefreshToken> {
-        return await client.refreshToken.findUnique({
-            where: { user_id },
+    async findTokenByUserId(user_id: string): Promise<RefreshTokens> {
+        return await client.refreshTokens.findUnique({
+            where: {
+                user_id,
+            },
         });
     }
 
     async deleteById(id: string): Promise<void> {
-        await client.refreshToken.delete({
+        await client.refreshTokens.delete({
             where: {
                 id,
             },
         });
     }
 
-    async findByToken(token: string): Promise<RefreshToken> {
-        return client.refreshToken.findFirst({
+    async findByTokenAndUserId(
+        user_id: string,
+        token: string,
+    ): Promise<RefreshTokens> {
+        return await client.refreshTokens.findFirst({
             where: {
                 token,
+                user_id,
             },
         });
     }
