@@ -15,7 +15,7 @@ const handlerError = (
         });
     }
 
-    // console.log(error);
+    console.log(error);
 
     return res
         .status(500)

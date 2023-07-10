@@ -25,6 +25,14 @@ class AuthenticateUserUseCase {
             throw new AppError('Email or password incorrect!', 'auth.error');
         }
 
+        if (!user.confirmation_email) {
+            throw new AppError(
+                'Confirm your email address',
+                'email.confirm',
+                401,
+            );
+        }
+
         const password_match = await compare(password, user.password);
 
         if (!password_match) {
