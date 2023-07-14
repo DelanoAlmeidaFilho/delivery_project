@@ -17,6 +17,7 @@ model User {
     password           String
     phone_number       String
     created_at         DateTime @default(now())
+    is_active          Boolean  @default(true)
     confirmation_email Boolean  @default(false)
 
     roles  Role[]  @relation("UserRole")
@@ -33,7 +34,7 @@ model User {
 
 model Role {
     id   String @id @default(uuid())
-    name String
+    name String @unique
 
     users User[] @relation("UserRole")
 

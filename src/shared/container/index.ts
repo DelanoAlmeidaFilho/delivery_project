@@ -8,6 +8,8 @@ import { IRefreshTokensRepository } from 'modules/secure/repository/IRefreshToke
 import { RefreshTokensRepository } from 'modules/secure/repository/implementations/prisma/RefreshTokensRepository';
 import { IUserTokensRepository } from 'modules/secure/repository/IUserTokensRepository';
 import { UserTokensRepository } from 'modules/secure/repository/implementations/prisma/UserTokensRepository';
+import { IRolesRepository } from 'modules/secure/repository/IRolesRepository';
+import { RolesRepository } from 'modules/secure/repository/implementations/prisma/RolesRepository';
 
 container.registerSingleton<IUsersRepository>(
     'UsersRepository',
@@ -22,4 +24,9 @@ container.registerSingleton<IRefreshTokensRepository>(
 container.registerSingleton<IUserTokensRepository>(
     'UserTokensRepository',
     UserTokensRepository,
+);
+
+container.registerSingleton<IRolesRepository>(
+    'RolesRepository',
+    RolesRepository,
 );

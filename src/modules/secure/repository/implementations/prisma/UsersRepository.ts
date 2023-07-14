@@ -48,6 +48,17 @@ class UsersRepository implements IUsersRepository {
             data,
         });
     }
+
+    async addRoles(user_id: string, roles: Role[]): Promise<void> {
+        await client.user.update({
+            where: { id: user_id },
+            data: {
+                roles: {
+                    connect: roles.map(role => ({ id: role.id })),
+                },
+            },
+        });
+    }
 }
 
 export { UsersRepository };

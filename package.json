@@ -6,10 +6,13 @@
     "scripts": {
         "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint . --ext .ts"
+        "lint": "eslint . --ext .ts" 
     },
     "author": "delano Almeida Filho",
     "license": "ISC",
+    "prisma":{
+        "seed":"ts-node-dev prisma/seed.ts"
+    },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.2",
         "@types/cors": "^2.8.13",
